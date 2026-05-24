@@ -1,0 +1,18 @@
+[gd_scene format=4 uid="uid://bexw8lo18euq4"]
+
+[ext_resource type="Texture2D" uid="uid://d0u0pivqnvmrt" path="res://Sprites/platform tile.png" id="1_1rc8e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5262"]
+texture = ExtResource("1_1rc8e")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mrs20"]
+sources/0 = SubResource("TileSetAtlasSource_n5262")
+
+[node name="platform" type="Node2D" unique_id=1503580515]
+metadata/_edit_horizontal_guides_ = [1.0]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1029636273]
+position = Vector2(8, 11)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_mrs20")

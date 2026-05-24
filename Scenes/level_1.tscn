@@ -1,0 +1,161 @@
+[gd_scene format=4 uid="uid://l0csyr150agi"]
+
+[ext_resource type="PackedScene" uid="uid://cweqlewtc6iod" path="res://Scenes/player.tscn" id="1_vk57k"]
+[ext_resource type="Script" uid="uid://cdakjh0dq4c3o" path="res://Scenes/overworld.gd" id="1_xrdnt"]
+[ext_resource type="PackedScene" uid="uid://dg546jspymc8l" path="res://Scenes/fish.tscn" id="2_8ffim"]
+[ext_resource type="Script" uid="uid://blx2h3xndv6g3" path="res://Scripts/treasures.gd" id="2_xfk5q"]
+[ext_resource type="Texture2D" uid="uid://d0u0pivqnvmrt" path="res://Sprites/platform tile.png" id="4_7p6j4"]
+[ext_resource type="PackedScene" uid="uid://cgk3yk1e7q6io" path="res://Scenes/goal_dog.tscn" id="5_6444e"]
+[ext_resource type="PackedScene" uid="uid://xbsttqrk7pa7" path="res://Scenes/npc.tscn" id="6_evi0p"]
+[ext_resource type="Script" uid="uid://tp36y2sygxon" path="res://Scripts/boundary.gd" id="7_lsmp6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
+texture = ExtResource("4_7p6j4")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6444e"]
+sources/0 = SubResource("TileSetAtlasSource_7p6j4")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6444e"]
+size = Vector2(318, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evi0p"]
+size = Vector2(112, 13.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsmp6"]
+size = Vector2(288, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
+size = Vector2(96, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+size = Vector2(320, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbghi"]
+size = Vector2(1152, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chwpn"]
+size = Vector2(20, 649)
+
+[sub_resource type="Gradient" id="Gradient_lsmp6"]
+offsets = PackedFloat32Array(0, 0.0060241222, 1)
+colors = PackedColorArray(0.17254902, 0.8039216, 1, 1, 0.3060297, 0.7661063, 0.89273196, 1, 0.06666667, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xrdnt"]
+gradient = SubResource("Gradient_lsmp6")
+
+[node name="Level_1" type="Node2D" unique_id=1439437130]
+script = ExtResource("1_xrdnt")
+
+[node name="Player" parent="." unique_id=1915131762 groups=["player"] instance=ExtResource("1_vk57k")]
+position = Vector2(75, 609)
+
+[node name="Treasures" type="Node2D" parent="." unique_id=1474677854 groups=["treasure"]]
+script = ExtResource("2_xfk5q")
+
+[node name="CounterLabel" type="Label" parent="Treasures" unique_id=1519497643]
+unique_name_in_owner = true
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 56.0
+offset_bottom = 36.0
+text = "TREASURE: 0"
+horizontal_alignment = 1
+
+[node name="Fish" parent="Treasures" unique_id=1340000316 instance=ExtResource("2_8ffim")]
+position = Vector2(288, 582)
+
+[node name="Fish2" parent="Treasures" unique_id=429447878 instance=ExtResource("2_8ffim")]
+position = Vector2(940, 470)
+
+[node name="Fish3" parent="Treasures" unique_id=957981820 instance=ExtResource("2_8ffim")]
+position = Vector2(720, 163)
+
+[node name="Fish4" parent="Treasures" unique_id=762657173 instance=ExtResource("2_8ffim")]
+position = Vector2(442, 151)
+
+[node name="Fish5" parent="Treasures" unique_id=347202014 instance=ExtResource("2_8ffim")]
+position = Vector2(934, 89)
+
+[node name="Platform" type="Node2D" parent="." unique_id=1571915693]
+
+[node name="Platform Texture" type="TileMapLayer" parent="Platform" unique_id=1509907283]
+position = Vector2(1, 23)
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_6444e")
+
+[node name="Platform1" type="StaticBody2D" parent="Platform" unique_id=134518685]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform1" unique_id=1163474061]
+position = Vector2(928, 544)
+shape = SubResource("RectangleShape2D_6444e")
+
+[node name="Platform2" type="StaticBody2D" parent="Platform" unique_id=2036655775]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2" unique_id=540536598]
+position = Vector2(681, 432.25)
+shape = SubResource("RectangleShape2D_evi0p")
+
+[node name="Platform3" type="StaticBody2D" parent="Platform" unique_id=2057165048]
+position = Vector2(-162, 135)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3" unique_id=1802540832]
+position = Vector2(614, 171)
+shape = SubResource("RectangleShape2D_lsmp6")
+
+[node name="Platform4" type="StaticBody2D" parent="Platform" unique_id=1704961031]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4" unique_id=1234843794]
+position = Vector2(753, 224)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="Platform5" type="StaticBody2D" parent="Platform" unique_id=1576532295]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5" unique_id=124712007]
+position = Vector2(977, 144)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="Ground" type="StaticBody2D" parent="Platform" unique_id=1212821332]
+
+[node name="GroundPlat" type="CollisionShape2D" parent="Platform/Ground" unique_id=118161853]
+position = Vector2(576, 640)
+shape = SubResource("RectangleShape2D_hbghi")
+
+[node name="GoalDog" parent="." unique_id=1094751894 instance=ExtResource("5_6444e")]
+position = Vector2(1088, 97)
+
+[node name="NPC" parent="." unique_id=351976295 instance=ExtResource("6_evi0p")]
+position = Vector2(1059, 596)
+scale = Vector2(0.3, 0.3)
+
+[node name="Boundary" type="Node2D" parent="." unique_id=2044586071]
+script = ExtResource("7_lsmp6")
+
+[node name="Wall" type="StaticBody2D" parent="Boundary" unique_id=958492752 groups=["boundary"]]
+position = Vector2(-1, 102)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/Wall" unique_id=1377869783]
+position = Vector2(0, 222.5)
+shape = SubResource("RectangleShape2D_chwpn")
+
+[node name="Wall2" type="StaticBody2D" parent="Boundary" unique_id=695811968 groups=["boundary"]]
+position = Vector2(-1, 102)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/Wall2" unique_id=845665450]
+position = Vector2(1154, 215)
+shape = SubResource("RectangleShape2D_chwpn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1479643884]
+z_index = -1
+offset_right = 1146.0
+offset_bottom = 633.0
+texture = SubResource("GradientTexture1D_xrdnt")
+
+[node name="Reset" type="Button" parent="." unique_id=2111253757]
+offset_left = 20.0
+offset_top = 43.0
+offset_right = 98.0
+offset_bottom = 74.0
+text = "Reset"
+
+[connection signal="pressed" from="Reset" to="." method="_on_button_pressed"]

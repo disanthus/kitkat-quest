@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://xbsttqrk7pa7"]
+
+[ext_resource type="Script" uid="uid://dpywp022w4qcu" path="res://Scripts/health.gd" id="1_kh24r"]
+[ext_resource type="Script" uid="uid://dklhsmf74of2j" path="res://Scripts/npc.gd" id="1_mcvl2"]
+[ext_resource type="Texture2D" uid="uid://dyxywvrnhbt64" path="res://Sprites/hbr default FITE.png" id="2_ul7y6"]
+[ext_resource type="Texture2D" uid="uid://cd4t2gu4teoyv" path="res://Sprites/hbr_open_mouth_pngtuber1  fitebutbetter.png" id="3_bc6q4"]
+[ext_resource type="Texture2D" uid="uid://dj7u18l6irift" path="res://Sprites/hbr_default_pngtuber1.png" id="5_d61ma"]
+[ext_resource type="Texture2D" uid="uid://ppj0l6juecjm" path="res://Sprites/hbr_open_mouth_pngtuber1.png" id="6_slxoh"]
+[ext_resource type="Texture2D" uid="uid://m1qpqu0u0ia3" path="res://Sprites/walk2.png" id="7_2xkex"]
+[ext_resource type="Texture2D" uid="uid://b0s1rfslr11vi" path="res://Sprites/walk1.png" id="7_8gudg"]
+[ext_resource type="PackedScene" uid="uid://2iw18o06qi12" path="res://Dialogue/dialogue.tscn" id="9_qi7up"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slxoh"]
+atlas = ExtResource("2_ul7y6")
+region = Rect2(0, 0, 196, 244)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l64hl"]
+atlas = ExtResource("3_bc6q4")
+region = Rect2(0, 0, 196, 244)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_215dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slxoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l64hl")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d61ma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_slxoh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8gudg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d61ma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2xkex")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul7y6"]
+size = Vector2(440, 219)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gudg"]
+size = Vector2(136, 184)
+
+[node name="NPC" type="CharacterBody2D" unique_id=839774440]
+script = ExtResource("1_mcvl2")
+
+[node name="Health" type="Node2D" parent="." unique_id=1119689210]
+script = ExtResource("1_kh24r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2061589418]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_215dd")
+animation = &"idle"
+
+[node name="DetectionArea" type="Area2D" parent="AnimatedSprite2D" unique_id=1524558719]
+position = Vector2(-144.82007, 0)
+
+[node name="DetectionCollision" type="CollisionShape2D" parent="AnimatedSprite2D/DetectionArea" unique_id=734104448]
+position = Vector2(150.82007, 4)
+shape = SubResource("RectangleShape2D_ul7y6")
+
+[node name="Timer" type="Timer" parent="." unique_id=268794047]
+autostart = true
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="." unique_id=391203356]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_8gudg")
+
+[node name="ChatPrompt" type="RichTextLabel" parent="." unique_id=232636701]
+visible = false
+offset_left = -215.0
+offset_top = -203.0
+offset_right = 221.0
+offset_bottom = -105.0
+theme_override_font_sizes/normal_font_size = 34
+text = "Press E to Chat"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dialogue" parent="." unique_id=1807961190 instance=ExtResource("9_qi7up")]
+offset_left = -4.0
+offset_top = -51.0
+offset_right = -4.0
+offset_bottom = -51.0
+
+[connection signal="body_entered" from="AnimatedSprite2D/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="dialogue_finished" from="Dialogue" to="." method="_on_dialogue_dialogue_finished"]

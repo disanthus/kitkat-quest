@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://2iw18o06qi12"]
+
+[ext_resource type="Script" uid="uid://p6vxx6dpfuqp" path="res://Scripts/dialogue.gd" id="1_1ei20"]
+
+[node name="Dialogue" type="Control" unique_id=1807961190]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ei20")
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=775946224]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -116.0
+offset_top = -220.0
+offset_right = 116.0
+offset_bottom = -154.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Text"
+fit_content = true
+horizontal_alignment = 1

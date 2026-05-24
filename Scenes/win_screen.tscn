@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dk2u3rrxdrvtw"]
+
+[ext_resource type="Script" uid="uid://1a1fowjhbeqs" path="res://Scripts/win_screen.gd" id="1_wrjho"]
+
+[node name="win_screen" type="Control" unique_id=1230324716]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wrjho")
+
+[node name="Congrats!!" type="Label" parent="." unique_id=1901404445]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 228.0
+offset_right = 576.0
+offset_bottom = 251.0
+text = "You won!!!"
+
+[node name="ReturnToMenuButton" type="Button" parent="." unique_id=1315005789]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 298.0
+offset_right = 639.0
+offset_bottom = 329.0
+text = "RETURN TO MAIN MENU"
+
+[node name="QuitGameButton" type="Button" parent="." unique_id=1232395470]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 334.0
+offset_right = 617.0
+offset_bottom = 365.0
+text = "QUIT TO DESKTOP"
+
+[connection signal="pressed" from="ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
+[connection signal="pressed" from="QuitGameButton" to="." method="_on_quit_game_button_pressed"]
